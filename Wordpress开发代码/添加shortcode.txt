@@ -1,0 +1,9 @@
+function print_menu_shortcode($atts, $content = null) {
+    extract(shortcode_atts(array( 'name' => null, ), $atts));
+    return wp_nav_menu( array( 'menu' => $name, 'echo' => false ) );
+}
+add_shortcode('menu', 'print_menu_shortcode');
+
+
+
+Place this in functions.php, then use [menu name="main-menu"] to call the menu in your content (replacing "main-menu" with your menu¡¯s slug, of course). 

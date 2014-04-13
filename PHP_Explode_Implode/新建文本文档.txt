@@ -1,0 +1,52 @@
+//alloyfold product/item.php  ----> specification image
+$prodspecs
+
+
+$bits=explode('<img',$prodspecs);
+$count=1;
+$max=count(bits);
+foreach($bits as $bit) {
+	if(substr($prodspecs,0,4)=='<img') {
+		//if($count&1) {
+			$imgdata=explode('src="',$bit);
+			$imgdata2=explode('"',$imgdata[1]);
+			$addtonew="<a href='/".$imgdata2[0]."' class='modal'>";		
+			$nbits=explode('>',$bit);
+			$addtonew.=$nbits[0]."></a>";
+			unset($nbits[0]);
+			$addtonew.=implode('>',$nbits);
+			$newcontent[]=$addtonew;
+		//} else {			
+		//}
+	} else 	{
+		if($count==1) {
+			$imgdata=explode('src="',$bits[$count]);
+			$imgdata2=explode('"',$imgdata[1]);
+			$newcontent[]=$bit."<a href='/".$imgdata2[0]."' class='modal'>";
+		 } elseif($count==$max) {
+			$nbits=explode('>',$bit);
+			$addtonew=$nbits[0]."></a>";
+			unset($nbits[0]);
+			$addtonew.=implode('>',$nbits);
+			$newcontent[]=$addtonew;
+		} else {
+			$nbits=explode('>',$bit);
+			$addtonew=$nbits[0]."></a>";
+			unset($nbits[0]);
+			$addtonew.=implode('>',$nbits);
+			//$newcontent[]=$addtonew;
+
+			$imgdata=explode('src="',$bits[$count]);
+			$imgdata2=explode('"',$imgdata[1]);
+			$newcontent[]=$addtonew."<a href='/".$imgdata2[0]."' class='modal'>";
+		}
+		
+	}	
+	$count++;
+}
+$newprodspecs=implode('<img',$newcontent);
+				
+					?>					
+					
+			
+					<?php echo $newprodspecs;?>

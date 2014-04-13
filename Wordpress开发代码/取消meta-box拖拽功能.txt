@@ -1,0 +1,7 @@
+function disable_drag_metabox() {
+    wp_deregister_script('postbox');
+}
+add_action( 'admin_init', 'disable_drag_metabox' );
+
+
+¸´ÖÆ½øfunction.php

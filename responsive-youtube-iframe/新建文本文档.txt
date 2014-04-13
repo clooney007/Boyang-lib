@@ -1,0 +1,20 @@
+Youtube videos can be responsive. Wrap the iframe in a div with the class of "videowrapper" and apply the following styles:
+
+.videowrapper {
+    float: none;
+    clear: both;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 25px;
+    height: 0;
+}
+.videowrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+The .videowrapper div should be inside a responsive element. The padding on the .videowrapper is necessary to keep the video from collapsing. You may have to tweak the numbers depending upon your layout.
